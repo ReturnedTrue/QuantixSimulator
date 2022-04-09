@@ -1,11 +1,12 @@
 import { Networking } from "@flamework/networking";
+import type { PointsRequestResponse } from "server/services/PointsService";
 import { PlayerData } from "./types/data/PlayerData";
 
 interface ServerEvents {}
 
 interface ServerFunctions {
 	getData: () => PlayerData | false;
-	addPoints: () => boolean;
+	addPoints: () => PointsRequestResponse | false;
 }
 
 interface ClientEvents {

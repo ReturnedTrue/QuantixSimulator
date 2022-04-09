@@ -1,6 +1,9 @@
 import Roact from "@rbxts/roact";
+import { StaticScreenGui } from "client/roact/util/components/StaticScreenGui";
 import { connectComponent } from "client/roact/util/functions/connectComponent";
 import { CombinedState } from "client/rodux/store";
+import { QUANTIX_IMAGE } from "shared/constants";
+import { StatDisplay } from "./components/StatDisplay";
 
 interface StatsUIProps {
 	quanpoints: number;
@@ -9,13 +12,9 @@ interface StatsUIProps {
 export class StatsUI extends Roact.Component<StatsUIProps> {
 	public render() {
 		return (
-			<screengui Key="Stats">
-				<textlabel
-					Position={UDim2.fromScale(0, 0.45)}
-					Size={UDim2.fromScale(0.1, 0.05)}
-					Text={`Quanpoints: ${this.props.quanpoints}`}
-				/>
-			</screengui>
+			<StaticScreenGui name="Stats" order={1}>
+				<StatDisplay displayedAmount={this.props.quanpoints} imageId={QUANTIX_IMAGE} />
+			</StaticScreenGui>
 		);
 	}
 }

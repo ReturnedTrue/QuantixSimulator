@@ -3,13 +3,12 @@ import RoactRodux from "@rbxts/roact-rodux";
 import { Players } from "@rbxts/services";
 import { clientStore } from "client/rodux/store";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyConnectedComponent = RoactRodux.ConnectedComponentClass<RoactRodux.ComponentType, any>;
+export type AnyConnectedComponent<P> = RoactRodux.ConnectedComponentClass<RoactRodux.ComponentType<P>, P>;
 
-export function renderConnectedComponent(component: AnyConnectedComponent) {
+export function renderConnectedComponent<P>(component: AnyConnectedComponent<P>, props?: P) {
 	const playerGui = Players.LocalPlayer.WaitForChild("PlayerGui");
 	const roactComponent = Roact.createElement(RoactRodux.StoreProvider, { store: clientStore }, [
-		Roact.createElement(component),
+		Roact.createElement(component, props),
 	]);
 
 	Roact.mount(roactComponent, playerGui);
