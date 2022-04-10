@@ -2,17 +2,19 @@ import Roact from "@rbxts/roact";
 import { RbxAssetString } from "shared/types/util/RbxAssetString";
 
 interface StatDisplayProps {
+	name: string;
 	displayedAmount: number;
 	imageId: RbxAssetString;
+	position: UDim2;
 }
 
 export class StatDisplay extends Roact.Component<StatDisplayProps> {
 	public render() {
 		return (
 			<frame
-				Key="Stat"
+				Key={this.props.name}
 				BackgroundColor3={Color3.fromRGB(255, 255, 255)}
-				Position={new UDim2(-0.05, 0, 0.35, 0)}
+				Position={this.props.position}
 				Size={new UDim2(0.25, 0, 0.05, 0)}
 			>
 				<uicorner />

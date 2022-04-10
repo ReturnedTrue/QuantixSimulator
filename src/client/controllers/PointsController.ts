@@ -46,6 +46,7 @@ export class PointsController implements OnInit {
 
 		renderConnectedComponent(connectedStatsUI, {
 			quanpoints: 0,
+			glaggles: 0,
 		});
 	}
 
